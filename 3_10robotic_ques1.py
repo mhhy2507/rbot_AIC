@@ -27,10 +27,7 @@ for _ in range(100):
     ortho = np.allclose(R @ R.T, np.eye(3), atol=1e-8)
     print(f"Determinant: {det:.6f}, Orthogonal: {ortho}")
 
-# Optional: check all at once
-all_ortho = all(np.allclose(R @ R.T, np.eye(3), atol=1e-8) for R in rotations)
-all_det1 = all(np.isclose(np.linalg.det(R), 1.0, atol=1e-8) for R in rotations)
-print(f"All orthogonal: {all_ortho}, All det=1: {all_det1}")
+
 
 #Ques 1c: Calculate the distance between two orientations by using logarithm of rotation matrix
 from scipy.linalg import logm
@@ -40,7 +37,8 @@ angle1, axis1 = random_axis_angle()
 angle2, axis2 = random_axis_angle()
 R1 = angvec2tr(angle1, axis1)[:3, :3]
 R2 = angvec2tr(angle2, axis2)[:3, :3]
-
+print (f"Rotation Matrix 1:\n{R1}")
+print (f"Rotation Matrix 2:\n{R2}")
 # Tính khoảng cách
 R_rel = R1.T @ R2
 log_R = logm(R_rel)

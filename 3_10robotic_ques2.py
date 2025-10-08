@@ -14,6 +14,8 @@ print("Recovered Euler angles:", eul_back)
 print("\n")
 
 #Ques 2: Khi θ = 0, hai trục quay đầu và cuối trùng nhau, mất một bậc tự do
+import numpy as np
+from spatialmath.base import eul2tr, tr2eul
 eul_lock = [np.pi/4, 0, np.pi/3]
 R_lock = eul2tr(*eul_lock)[:3, :3]
 print("Rotation matrix (gimbal lock):\n", R_lock)
